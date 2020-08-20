@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Infrastructure.Data;
-using Core.Interfaces;
 using AutoMapper;
 using services.Helpers;
+using services.Middleware;
+using services.Extensions;
 
 namespace services
 {
@@ -27,20 +27,20 @@ namespace services
 
             // Inject the Database
             services.AddDbContext<StoreContext>(
-                option => option.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+                option => option.UseSqlite(_config.GetConnectionString("DefaultConnection")));            
             
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddAutoMapper(typeof(MappingProfiles));
+
+            services.AddApplicationServices();
+            services.AddSwaggerDocumentation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware<ExceptionMiddleware>();
+            
+            app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
             app.UseHttpsRedirection();
 
@@ -49,6 +49,8 @@ namespace services
             app.UseStaticFiles();
 
             app.UseAuthorization();
+
+            app.UserSwaggerDocumentation();
 
             app.UseEndpoints(endpoints =>
             {
