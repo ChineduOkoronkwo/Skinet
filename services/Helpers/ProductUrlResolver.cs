@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using services.Dtos;
 
 namespace services.Helpers
-{
+{    
     public class ProductUrlResolver : IValueResolver<Product, ProductToReturnDto, string>
     {
         private readonly IConfiguration _config;
