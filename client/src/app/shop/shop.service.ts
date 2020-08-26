@@ -1,3 +1,4 @@
+import { IProduct } from './../shared/models/product';
 import { ShopParams } from './../shared/models/shopParams';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -40,6 +41,10 @@ export class ShopService {
         return response.body;
       })
     );
+  }
+
+  getProduct(id: number): Observable<IProduct> {
+    return this.http.get<IProduct>(`${this.baseUrl}products/${id}`);
   }
 
   getBrands(): Observable<IBrand[]> {
