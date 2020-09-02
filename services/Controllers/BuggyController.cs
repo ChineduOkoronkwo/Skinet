@@ -1,4 +1,5 @@
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using services.Errors;
 
@@ -41,6 +42,13 @@ namespace services.Controllers
         public ActionResult GetValidationError(int id)
         {
             return Ok();
+        }
+
+        [HttpGet("testAuth")]
+        [Authorize]
+        public ActionResult<string> GetSecretTest() 
+        {
+            return "apzap dza secret";
         }
 
     }
