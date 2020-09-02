@@ -9,6 +9,7 @@ using services.Helpers;
 using services.Middleware;
 using services.Extensions;
 using StackExchange.Redis;
+using Infrastructure.Identity;
 
 namespace services
 {
@@ -26,10 +27,15 @@ namespace services
         {
             services.AddControllers();
 
-            // Inject the Database
+            // Inject the shop database
             services.AddDbContext<StoreContext>(
                 option => option.UseSqlite(_config.GetConnectionString("DefaultConnection"))); 
 
+            // Inject identity database
+            services.AddDbContext<AppIdentityDbContext>(
+                option => option.UseSqlite(_config.GetConnectionString("IdentityConnection"))); 
+
+            // Inject shopping basket database
             services.AddSingleton<IConnectionMultiplexer>(c => {
                 var configuration = ConfigurationOptions.Parse(
                     _config.GetConnectionString("Redis"), true);
@@ -39,6 +45,7 @@ namespace services
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddApplicationServices();
+            services.AddIdentityServices();
             services.AddSwaggerDocumentation();
 
             services.AddCors(opt => {
