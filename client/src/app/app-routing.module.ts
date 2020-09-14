@@ -21,6 +21,8 @@ const routes: Routes = [
     loadChildren: () => import('./checkout/checkout.module')
     .then(mod => mod.CheckoutModule), data: {breadcrumb: 'Checkout'}
   },
+  {path: 'order', loadChildren: () => import('./order/order.module')
+    .then(mod => mod.OrderModule), data: {breadcrumb: {skip: true}}},
   {path: 'account', loadChildren: () => import('./account/account.module')
     .then(mod => mod.AccountModule), data: {breadcrumb: {skip: true}}},
   {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
