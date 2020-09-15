@@ -45,6 +45,53 @@
                 </tbody>
             </table>
         </div>
+        <div class="row">
+            <div class="col-6 offset-6">
+                <div class="p-4">                    
+                    <ul class="list-unstyled mb-4">
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Order subtotal</strong>
+                            <strong>{{order.subtotal | currency}}</strong>            
+                        </li>
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Shipping and handling</strong>
+                            <strong>{{order.shippingPrice | currency}}</strong>            
+                        </li>                                          
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Total</strong>
+                            <strong>{{order.total | currency}}</strong>     
+                        </li>
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Delivery Method</strong>
+                            <strong>{{order.deliveryMethod}}</strong>     
+                        </li>
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Order Status:</strong> 
+                            <strong>{{order.status}}</strong>      
+                        </li>
+                        <li class="d-flex">
+                            <strong class="text-muted">Shipping Address:</strong>   
+                        </li>
+                        <li class="d-flex">
+                            <strong>
+                                {{order.shipToAddress.firstName}} {{order.shipToAddress.lastName}}
+                            </strong>
+                        </li>
+                        <li class="d-flex">
+                            <strong>
+                                {{order.shipToAddress.street}}, {{order.shipToAddress.city}}
+                            </strong>
+                        </li>
+                        <li class="d-flex border-bottom">
+                            <strong>
+                                {{order.shipToAddress.state}}, {{order.shipToAddress.zipcode}}
+                            </strong>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
     </ng-container>
 </div>
 

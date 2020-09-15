@@ -1,5 +1,4 @@
 import { OrderRoutingModule } from './order-routing.module';
-import { Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderComponent } from './order.component';

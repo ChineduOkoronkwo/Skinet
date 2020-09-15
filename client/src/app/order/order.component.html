@@ -1,1 +1,43 @@
-<p>order works!</p>
+<div class="container mt-5">
+    <ng-container *ngIf="orders">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="border-0 bg-light" scope="col" >
+                            <div class="p-2 px-3 text-uppercase">Order</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="py-2 text-uppercase">Order Date</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="py-2 text-uppercase">Total</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="py-2 text-uppercase">Status</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">
+                            <div class="py-2 text-uppercase">Delivery Method</div>
+                        </th>
+                        <th class="border-0 bg-light" scope="col">                            
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of orders">
+                        <td class="align-middle"><strong>#{{order.id}}</strong></td>
+                        <td class="align-middle"><strong>{{order.orderDate | date:'medium'}}</strong></td>
+                        <td class="align-middle"><strong>{{order.total | currency}}</strong></td>
+                        <td class="align-middle"><strong>{{order.status}}</strong></td>
+                        <td class="align-middle"><strong>{{order.deliveryMethod}}</strong></td>
+                        <td class="align-middle">
+                            <button class="btn btn-outline-primary" (click)="viewOrder(order)">
+                                View Order Details
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>
