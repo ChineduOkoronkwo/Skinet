@@ -23,7 +23,7 @@ export class CheckoutSuccessComponent implements OnInit {
 
   viewOrder(): void {
     const navigationExtras: NavigationExtras = {state: this.order};
-    this.router.navigate(['order/orderDetails'], navigationExtras);
+    this.router.navigate(['orders/orderDetails'], navigationExtras);
   }
 
 }
