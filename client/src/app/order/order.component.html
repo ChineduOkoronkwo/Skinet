@@ -24,12 +24,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let order of orders" (click)="viewOrder(order)" style="cursor: pointer;">
+                    <tr *ngFor="let order of orders">
                         <td class="align-middle"><strong>#{{order.id}}</strong></td>
                         <td class="align-middle"><strong>{{order.orderDate | date:'medium'}}</strong></td>
                         <td class="align-middle"><strong>{{order.total | currency}}</strong></td>
                         <td class="align-middle"><strong>{{order.status}}</strong></td>
-                        <td class="align-middle"><strong>{{order.deliveryMethod}}</strong></td>                        
+                        <td class="align-middle"><strong>{{order.deliveryMethod}}</strong></td>
+                        <td class="align-middle">
+                            <button class="btn btn-outline-primary" (click)="viewOrder(order)">
+                                View Order Details
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
