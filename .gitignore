@@ -5,5 +5,9 @@ appsettings.json
 *.rdb
 node_modules/
 publish
+<<<<<<< HEAD
 wwwroot
 settings.json
+=======
+wwwroot
+>>>>>>> fd1aa5f2c9d246e0b78242a6c65e4a2068012db5
