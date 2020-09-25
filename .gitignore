@@ -5,9 +5,12 @@ appsettings.json
 *.rdb
 node_modules/
 <<<<<<< HEAD
+<<<<<<< HEAD
 publish
 wwwroot
 settings.json
 
+=======
+>>>>>>> parent of c7255b8... End of section 23
 =======
 >>>>>>> parent of c7255b8... End of section 23
